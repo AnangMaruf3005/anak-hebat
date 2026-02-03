@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anak Hebat Kamarang Lebak (AHE) – Tempat Les Seru untuk Anak SD</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --blue:      #4FAAEB;
+  --blue-light:#D6EEF9;
+  --blue-dark: #2A7DB5;
+  --yellow:    #FFD63A;
+  --yellow-lt: #FFF3C4;
+  --green:     #5ECE7B;
+  --green-lt:  #D4F5E0;
+  --green-dk:  #3CA55C;
+  --pink:      #FF8FA3;
+  --pink-lt:   #FFE0E6;
+  --orange:    #FFB24A;
+  --orange-lt: #FFF0D6;
+  --white:     #FFFFFF;
+  --text-dark: #2D3748;
+  --text-mid:  #5A6A7A;
+  --radius:    18px;
+  --radius-sm: 12px;
+  --shadow:    0 8px 30px rgba(0,0,0,.10);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,.08);
+}
+
+/* ─── RESET ─── */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  color:var(--text-dark);
+  background:#F7FAFC;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ─── NAVBAR ─── */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 16px rgba(0,0,0,.07);
+  padding:14px 0;
+  transition:padding .3s;
+}
+.navbar.scrolled{padding:8px 0}
+.nav-inner{
+  max-width:1140px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo .logo-icon{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+.nav-logo span{
+  font-family:'Fredoka One',cursive;
+  font-size:1.35rem;
+  color:var(--blue-dark);
+  letter-spacing:.5px;
+}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  font-weight:700;font-size:.92rem;
+  color:var(--text-mid);
+  position:relative;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--blue-dark)}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:3px;border-radius:2px;
+  background:var(--yellow);transition:width .3s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:linear-gradient(135deg,var(--green),var(--blue));
+  color:#fff;padding:9px 22px;border-radius:30px;
+  font-weight:800;font-size:.88rem;
+  box-shadow:var(--shadow-sm);
+  transition:transform .25s,box-shadow .25s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.hamburger span{width:26px;height:3px;border-radius:3px;background:var(--blue-dark);transition:.3s}
+
+/* mobile menu */
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(255,255,255,.97);z-index:998;
+  flex-direction:column;align-items:center;justify-content:center;gap:24px;
+  padding-top:80px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.15rem;font-weight:700;color:var(--text-dark)}
+.mobile-menu .close-btn{
+  position:absolute;top:20px;right:28px;font-size:2rem;
+  cursor:pointer;color:var(--text-mid);
+}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg, #E8F5FF 0%, #FFF9E0 50%, #E6FAF0 100%);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:100px 24px 60px;
+}
+/* floating shapes */
+.shape{position:absolute;border-radius:50%;opacity:.25;pointer-events:none}
+.shape-1{width:320px;height:320px;background:var(--blue);top:-80px;right:-60px;animation:float1 7s ease-in-out infinite}
+.shape-2{width:180px;height:180px;background:var(--yellow);bottom:80px;left:-40px;animation:float2 9s ease-in-out infinite}
+.shape-3{width:100px;height:100px;background:var(--green);top:40%;right:12%;animation:float1 6s ease-in-out infinite .8s}
+.shape-4{width:70px;height:70px;background:var(--pink);bottom:30%;left:18%;animation:float2 8s ease-in-out infinite 1s}
+
+@keyframes float1{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(6deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(25px) rotate(-5deg)}}
+
+.hero-inner{
+  max-width:1140px;margin:0 auto;width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:48px;
+  position:relative;z-index:2;
+}
+.hero-text{flex:1;max-width:540px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--yellow-lt);border:2px solid var(--yellow);
+  border-radius:30px;padding:6px 18px;margin-bottom:20px;
+  font-weight:800;font-size:.88rem;color:#B07D00;
+}
+.hero-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--yellow);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+
+.hero-text h1{
+  font-family:'Fredoka One',cursive;
+  font-size:3rem;line-height:1.15;
+  color:var(--blue-dark);margin-bottom:16px;
+}
+.hero-text h1 .highlight{
+  background:linear-gradient(135deg,var(--green),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-text p{
+  font-size:1.1rem;color:var(--text-mid);margin-bottom:32px;max-width:460px;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green),#3CA55C);
+  color:#fff;padding:14px 30px;border-radius:40px;
+  font-weight:800;font-size:1rem;display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 20px rgba(94,206,123,.35);
+  transition:transform .25s,box-shadow .25s;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(94,206,123,.45)}
+.btn-secondary{
+  background:#fff;border:2.5px solid var(--blue);
+  color:var(--blue-dark);padding:13px 28px;border-radius:40px;
+  font-weight:800;font-size:1rem;display:inline-flex;align-items:center;gap:8px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .25s,box-shadow .25s,background .25s;
+}
+.btn-secondary:hover{transform:translateY(-3px);background:var(--blue-light)}
+
+/* hero illustration */
+.hero-illust{
+  flex:0 0 420px;max-width:420px;
+  position:relative;
+}
+.hero-card-main{
+  background:#fff;border-radius:28px;padding:32px;
+  box-shadow:var(--shadow);position:relative;z-index:2;
+  text-align:center;
+}
+.hero-card-main .card-icon{font-size:80px;display:block;margin-bottom:12px;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-card-main h3{font-family:'Fredoka One',cursive;font-size:1.25rem;color:var(--blue-dark);margin-bottom:6px}
+.hero-card-main p{color:var(--text-mid);font-size:.92rem}
+
+/* floating mini cards */
+.mini-card{
+  position:absolute;background:#fff;border-radius:16px;
+  padding:12px 18px;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:.85rem;
+  white-space:nowrap;z-index:3;
+}
+.mini-card .mc-icon{font-size:24px}
+.mc-1{top:-18px;right:-30px;animation:float1 5s ease-in-out infinite}
+.mc-2{bottom:-10px;left:-40px;animation:float2 6s ease-in-out infinite .6s}
+.mc-3{bottom:60px;right:-50px;animation:float1 7s ease-in-out infinite 1s}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:80px 24px}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:52px}
+.section-head .tag{
+  display:inline-block;background:var(--yellow-lt);color:#B07D00;
+  padding:5px 18px;border-radius:20px;font-weight:800;font-size:.82rem;
+  margin-bottom:12px;
+}
+.section-head h2{
+  font-family:'Fredoka One',cursive;font-size:2.1rem;color:var(--blue-dark);
+  margin-bottom:10px;
+}
+.section-head p{color:var(--text-mid);font-size:1.02rem;max-width:580px;margin:0 auto}
+
+/* ─── ABOUT ─── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+}
+.about-illust{
+  background:linear-gradient(135deg,var(--blue-light),var(--green-lt));
+  border-radius:28px;padding:52px 36px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.about-illust .big-icon{font-size:100px;display:block;margin-bottom:16px}
+.about-illust h3{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--blue-dark);margin-bottom:8px}
+.about-illust p{color:var(--text-mid);font-size:.95rem}
+.about-illust .corner-star{
+  position:absolute;font-size:36px;opacity:.35;
+}
+.corner-star.s1{top:12px;right:18px;animation:spin 12s linear infinite}
+.corner-star.s2{bottom:16px;left:14px;animation:spin 16s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.about-content h2{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--blue-dark);margin-bottom:14px}
+.about-content p{color:var(--text-mid);margin-bottom:20px;font-size:1rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pill{
+  background:var(--white);border:2px solid var(--blue-light);
+  border-radius:30px;padding:8px 18px;font-weight:700;font-size:.88rem;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:var(--shadow-sm);
+}
+
+/* ─── PROGRAMS ─── */
+.prog-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;
+}
+.prog-card{
+  background:#fff;border-radius:var(--radius);padding:32px 24px;
+  text-align:center;box-shadow:var(--shadow-sm);
+  border-top:5px solid var(--blue);
+  transition:transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.prog-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.prog-card:nth-child(2){border-top-color:var(--yellow)}
+.prog-card:nth-child(3){border-top-color:var(--green)}
+.prog-card:nth-child(4){border-top-color:var(--pink)}
+.prog-card:nth-child(5){border-top-color:var(--orange)}
+.prog-card .p-icon{font-size:48px;margin-bottom:14px;display:block}
+.prog-card h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--blue-dark);margin-bottom:8px}
+.prog-card p{color:var(--text-mid);font-size:.88rem}
+.prog-card .p-badge{
+  position:absolute;top:14px;right:14px;
+  background:var(--yellow-lt);color:#B07D00;
+  font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:12px;
+}
+
+/* ─── ADVANTAGES ─── */
+.adv-section{background:linear-gradient(160deg,#E8F5FF 0%,#E6FAF0 100%)}
+.adv-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px;
+}
+.adv-card{
+  background:#fff;border-radius:var(--radius);padding:34px 24px 28px;
+  text-align:center;box-shadow:var(--shadow-sm);
+  border:2px solid transparent;
+  transition:border-color .3s,transform .3s;
+}
+.adv-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.adv-card .a-icon-wrap{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px;font-size:34px;
+}
+.adv-card:nth-child(1) .a-icon-wrap{background:var(--blue-light)}
+.adv-card:nth-child(2) .a-icon-wrap{background:var(--yellow-lt)}
+.adv-card:nth-child(3) .a-icon-wrap{background:var(--green-lt)}
+.adv-card:nth-child(4) .a-icon-wrap{background:var(--pink-lt)}
+.adv-card h4{font-family:'Fredoka One',cursive;font-size:1.05rem;color:var(--blue-dark);margin-bottom:8px}
+.adv-card p{color:var(--text-mid);font-size:.88rem}
+
+/* ─── GALLERY ─── */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:180px 180px;
+  gap:16px;
+}
+.g-item{
+  border-radius:18px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,var(--blue-light),var(--green-lt));
+  display:flex;align-items:center;justify-content:center;
+  font-size:56px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s;
+}
+.g-item:hover{transform:scale(1.03)}
+.g-item:nth-child(1){grid-column:span 2;grid-row:span 2;font-size:100px;background:linear-gradient(135deg,#D6EEF9,#E6FAF0)}
+.g-item:nth-child(2){background:linear-gradient(135deg,#FFF3C4,#FFE0E6)}
+.g-item:nth-child(3){background:linear-gradient(135deg,#D4F5E0,#D6EEF9)}
+.g-item:nth-child(4){background:linear-gradient(135deg,#FFE0E6,#FFF0D6)}
+.g-item:nth-child(5){background:linear-gradient(135deg,#FFF0D6,#FFF3C4)}
+.g-item .g-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.5));
+  color:#fff;padding:28px 16px 10px;
+  font-size:.82rem;font-weight:700;text-align:center;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.testi-card{
+  background:#fff;border-radius:var(--radius);padding:28px;
+  box-shadow:var(--shadow-sm);position:relative;
+  border-left:5px solid var(--blue);
+  transition:transform .3s;
+}
+.testi-card:hover{transform:translateY(-4px)}
+.testi-card:nth-child(2){border-left-color:var(--green)}
+.testi-card:nth-child(3){border-left-color:var(--yellow)}
+.testi-quote{font-size:2rem;color:var(--blue);line-height:1;margin-bottom:8px}
+.testi-card p{color:var(--text-mid);font-size:.92rem;font-style:italic;margin-bottom:16px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+.testi-card:nth-child(1) .testi-avatar{background:var(--blue-light)}
+.testi-card:nth-child(2) .testi-avatar{background:var(--green-lt)}
+.testi-card:nth-child(3) .testi-avatar{background:var(--yellow-lt)}
+.testi-author-info strong{font-size:.9rem;color:var(--text-dark)}
+.testi-author-info span{font-size:.78rem;color:var(--text-mid)}
+.stars{color:var(--yellow);font-size:.9rem;margin-bottom:4px}
+
+/* ─── FAQ ─── */
+.faq-wrap{max-width:740px;margin:0 auto}
+.faq-item{
+  background:#fff;border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm);margin-bottom:12px;overflow:hidden;
+  border:2px solid transparent;
+  transition:border-color .3s;
+}
+.faq-item.open{border-color:var(--blue)}
+.faq-q{
+  padding:18px 22px;display:flex;align-items:center;
+  justify-content:space-between;cursor:pointer;
+  user-select:none;
+}
+.faq-q h4{font-size:.96rem;color:var(--text-dark);font-weight:700}
+.faq-q .arrow{
+  font-size:1.1rem;color:var(--blue);
+  transition:transform .35s;flex-shrink:0;margin-left:12px;
+}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .4s ease;
+  padding:0 22px;
+}
+.faq-a p{color:var(--text-mid);font-size:.9rem;padding-bottom:16px}
+.faq-item.open .faq-a{max-height:200px;padding-top:0}
+
+/* ─── CONTACT / REGISTRATION ─── */
+.contact-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;
+}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-info h2{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--blue-dark)}
+.contact-info>p{color:var(--text-mid);font-size:.96rem}
+.info-block{background:#fff;border-radius:var(--radius-sm);padding:20px 22px;box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start}
+.info-block .ib-icon{
+  width:46px;height:46px;border-radius:14px;
+  background:var(--blue-light);display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+}
+.info-block h5{font-size:.9rem;color:var(--text-dark);margin-bottom:3px}
+.info-block p{font-size:.84rem;color:var(--text-mid)}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;padding:14px 28px;border-radius:40px;
+  font-weight:800;font-size:1rem;
+  box-shadow:0 6px 20px rgba(37,211,102,.35);
+  transition:transform .25s,box-shadow .25s;
+  align-self:flex-start;
+}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(37,211,102,.45)}
+
+/* form */
+.reg-form{
+  background:#fff;border-radius:var(--radius);padding:36px;
+  box-shadow:var(--shadow);
+}
+.reg-form h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--blue-dark);margin-bottom:4px;text-align:center}
+.reg-form .form-sub{color:var(--text-mid);font-size:.85rem;text-align:center;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-weight:700;font-size:.88rem;color:var(--text-dark);margin-bottom:6px}
+.form-group input,
+.form-group select{
+  width:100%;padding:11px 16px;border-radius:12px;
+  border:2px solid #E2E8F0;font-family:'Nunito',sans-serif;font-size:.92rem;
+  background:#FAFAFA;transition:border-color .3s,box-shadow .3s;
+  outline:none;
+}
+.form-group input:focus,
+.form-group select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,170,235,.15);background:#fff}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn-submit{
+  width:100%;padding:13px;border:none;border-radius:30px;
+  background:linear-gradient(135deg,var(--green),var(--blue));
+  color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(94,206,123,.3);
+  transition:transform .25s,box-shadow .25s;margin-top:6px;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(94,206,123,.4)}
+
+/* schedule mini table */
+.schedule-wrap{background:#fff;border-radius:var(--radius-sm);padding:20px 22px;box-shadow:var(--shadow-sm)}
+.schedule-wrap h5{font-size:.9rem;color:var(--text-dark);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sched-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F0F0F0;font-size:.84rem}
+.sched-row:last-child{border:none}
+.sched-row span:first-child{font-weight:700;color:var(--text-dark)}
+.sched-row span:last-child{color:var(--text-mid)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--blue-dark);color:#fff;padding:56px 24px 28px;
+}
+.footer-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
+.footer-brand .fb-logo{
+  font-family:'Fredoka One',cursive;font-size:1.5rem;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.footer-brand .fb-logo .fl-icon{font-size:24px}
+.footer-brand p{color:rgba(255,255,255,.65);font-size:.86rem;line-height:1.6}
+.footer-col h5{font-size:.9rem;margin-bottom:14px;color:var(--yellow)}
+.footer-col a{display:block;color:rgba(255,255,255,.65);font-size:.85rem;margin-bottom:8px;transition:color .25s}
+.footer-col a:hover{color:#fff}
+.footer-bot{
+  max-width:1140px;margin:36px auto 0;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.15);
+  display:flex;justify-content:space-between;align-items:center;
+  color:rgba(255,255,255,.45);font-size:.78rem;
+}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--green-dk);color:#fff;padding:14px 32px;border-radius:30px;
+  font-weight:700;font-size:.92rem;box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:9999;
+  display:flex;align-items:center;gap:10px;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-inner{flex-direction:column;text-align:center}
+  .hero-text{max-width:100%}
+  .hero-text p{max-width:100%}
+  .hero-btns{justify-content:center}
+  .hero-illust{flex:0 0 auto;width:320px}
+  .about-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:150px 150px}
+  .g-item:nth-child(1){grid-column:span 2}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-text h1{font-size:2.1rem}
+  .section-head h2{font-size:1.65rem}
+  .hero-illust{width:260px}
+  .mini-card{display:none}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:140px 140px 140px}
+  .g-item:nth-child(1){grid-column:span 2}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bot{flex-direction:column;gap:6px;text-align:center}
+  .reg-form{padding:24px 20px}
+  .testi-grid{grid-template-columns:1fr}
+  .section{padding:60px 20px}
+}
+
+/* ─── UTILITY ─── */
+.text-center{text-align:center}
+.mt-8{margin-top:32px}
+.gap-sm{gap:10px}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAVBAR ════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">⭐</div>
+      <span>AHE</span>
+    </a>
+    <div class="nav-links">
+      <a href="#tentang">Tentang</a>
+      <a href="#program">Program</a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontak" class="nav-cta">Daftar Sekarang</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="close-btn" onclick="toggleMenu()">&times;</span>
+  <a href="#tentang" onclick="toggleMenu()">Tentang</a>
+  <a href="#program" onclick="toggleMenu()">Program Les</a>
+  <a href="#keunggulan" onclick="toggleMenu()">Keunggulan</a>
+  <a href="#testimoni" onclick="toggleMenu()">Testimoni</a>
+  <a href="#galeri" onclick="toggleMenu()">Galeri</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#kontak" onclick="toggleMenu()" style="background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;padding:12px 32px;border-radius:30px;font-weight:800">Daftar Sekarang</a>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="beranda">
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+  <div class="shape shape-4"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> Tempat Les Terpercaya di Kamarang Lebak</div>
+      <h1>Tempat Les Seru untuk Mencetak <span class="highlight">Anak Hebat</span></h1>
+      <p>Belajar jadi mudah, menyenangkan, dan berprestasi bersama AHE. Metode interaktif & tutor berpengalaman untuk anak SD kelas 1–6.</p>
+      <div class="hero-btns">
+        <a href="#kontak" class="btn-primary">📝 Daftar Les Sekarang</a>
+        <a href="https://wa.me/62085721662001?text=Halo%20AHE%2C%20saya%20ingin%20konsultasi%20gratis%20mengenai%20program%20les." target="_blank" class="btn-secondary">💬 Konsultasi Gratis</a>
+      </div>
+    </div>
+
+    <div class="hero-illust">
+      <div class="hero-card-main">
+        <span class="card-icon">🎒</span>
+        <h3>Anak Hebat Kamarang Lebak</h3>
+        <p>Les seru & efektif untuk anak SD</p>
+      </div>
+      <div class="mini-card mc-1"><span class="mc-icon">⭐</span> Metode Belajar Fun</div>
+      <div class="mini-card mc-2"><span class="mc-icon">📚</span> Kelas 1–6 SD</div>
+      <div class="mini-card mc-3"><span class="mc-icon">💯</span> Prestasi Terbaik</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TENTANG ════════ -->
+<section class="section" id="tentang">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-illust reveal">
+        <span class="corner-star s1">✦</span>
+        <span class="corner-star s2">✦</span>
+        <span class="big-icon">🏫</span>
+        <h3>Didirikan dengan Semangat</h3>
+        <p>Untuk menghasilkan generasi cerdas dan berkarakter</p>
+      </div>
+      <div class="about-content reveal">
+        <div class="section-head" style="text-align:left;margin-bottom:16px">
+          <span class="tag">✨ Tentang Kami</span>
+        </div>
+        <h2>Selamat Datang di Anak Hebat Kamarang Lebak</h2>
+        <p>
+          <strong>Anak Hebat Kamarang Lebak (AHE)</strong> adalah lembaga les pendidikan yang didirikan dengan misi mulia — membantu setiap anak SD di Kamarang Lebak untuk tumbuh menjadi pribadi <em>cerdas, percaya diri, dan berkarakter</em>.
+        </p>
+        <p>
+          Kami percaya bahwa setiap anak memiliki potensi luar biasa. Dengan metode pembelajaran yang menyenangkan, tutor profesional, dan lingkungan belajar yang aman & positif, kami hadir untuk mendampingi perjalanan akademik putra-putri Anda.
+        </p>
+        <div class="about-pills">
+          <span class="pill">📖 Fokus Akademik</span>
+          <span class="pill">💛 Karakter Anak</span>
+          <span class="pill">🛡️ Lingkungan Aman</span>
+          <span class="pill">👨‍👧 Dekat Orang Tua</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROGRAM ════════ -->
+<section class="section" id="program" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">📚 Program Kami</span>
+      <h2>Program Les yang Seru & Efektif</h2>
+      <p>Dirancang khusus sesuai kurikulum SD agar anak Anda makin percaya diri di kelas</p>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card reveal">
+        <span class="p-badge">Kelas 1–2</span>
+        <span class="p-icon">🔢</span>
+        <h4>Calistung</h4>
+        <p>Membaca, menulis & menghitung dengan cara yang menyenangkan untuk fondasi yang kuat</p>
+      </div>
+      <div class="prog-card reveal">
+        <span class="p-badge">Semua Kelas</span>
+        <span class="p-icon">➕</span>
+        <h4>Matematika SD</h4>
+        <p>Dari penjumlahan hingga perbangingan, setiap konsep diajarkan secara visual dan interaktif</p>
+      </div>
+      <div class="prog-card reveal">
+        <span class="p-badge">Semua Kelas</span>
+        <span class="p-icon">📝</span>
+        <h4>Bahasa Indonesia</h4>
+        <p>Kemampuan menulis, membaca & berbicara yang menjadi dasar prestasi akademik anak</p>
+      </div>
+      <div class="prog-card reveal">
+        <span class="p-badge">Kelas 3–6</span>
+        <span class="p-icon">🔬</span>
+        <h4>IPA</h4>
+        <p>Eksperimen seru & praktis yang membuat anak semakin penasaran dan mencintai sains</p>
+      </div>
+      <div class="prog-card reveal">
+        <span class="p-badge">Fleksibel</span>
+        <span class="p-icon">📋</span>
+        <h4>PR & Ulangan</h4>
+        <p>Pendampingan khusus pekerjaan rumah dan persiapan intensif menjelang ujian</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ KEUNGGULAN ════════ -->
+<section class="section adv-section" id="keunggulan">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">🌟 Mengapa AHE</span>
+      <h2>Keunggulan yang Membedakan Kami</h2>
+      <p>Kami hadir dengan pendekatan yang berbeda — bukan sekadar bimbingan biasa</p>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card reveal">
+        <div class="a-icon-wrap">🎮</div>
+        <h4>Metode Belajar Fun</h4>
+        <p>Pembelajaran berbasis permainan & aktivitas interaktif agar anak tidak bosan dan tetap semangat</p>
+      </div>
+      <div class="adv-card reveal">
+        <div class="a-icon-wrap">🤝</div>
+        <h4>Tutor Sabar & Profesional</h4>
+        <p>Tim pengajar kami berpengalaman, ramah, dan memahami kebutuhan belajar setiap anak</p>
+      </div>
+      <div class="adv-card reveal">
+        <div class="a-icon-wrap">👥</div>
+        <h4>Kelas Kecil</h4>
+        <p>Jumlah peserta terbatas per kelas agar setiap anak mendapat perhatian maksimal dari tutor</p>
+      </div>
+      <div class="adv-card reveal">
+        <div class="a-icon-wrap">📊</div>
+        <h4>Laporan Perkembangan</h4>
+        <p>Orang tua menerima laporan rutin tentang kemajuan belajar anak secara transparan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TESTIMONI ════════ -->
+<section class="section" id="testimoni" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">💬 Testimoni</span>
+      <h2>Cerita Sukses dari Orang Tua</h2>
+      <p>Kepercayaan keluarga adalah motivasi terbesar kami</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>Anak saya yang tadinya takut matematika, sekarang malah antusias setiap hari les. Perkembangan yang luar biasa hanya dalam 2 bulan!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div class="testi-author-info">
+            <strong>Ibu Sari Dewi</strong>
+            <span>Orang tua anak kelas 3</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>Tutornya sangat sabar dan menyenangkan. Putra saya selalu semangat untuk datang les — bukan lagi sekadar kewajiban.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨</div>
+          <div class="testi-author-info">
+            <strong>Bapak Ahmad R.</strong>
+            <span>Orang tua anak kelas 1</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>Laporan perkembangannya sangat membantu. Kami bisa pantau progres anak tanpa harus repot. Rekomendasi banget!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div class="testi-author-info">
+            <strong>Ibu Rina Kusuma</strong>
+            <span>Orang tua anak kelas 5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ GALERI ════════ -->
+<section class="section" id="galeri" style="background:linear-gradient(160deg,#F0F9FF,#F0FFF4)">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">📸 Galeri</span>
+      <h2>Momen Belajar Seru di AHE</h2>
+      <p>Lihat semangat dan kebahagiaan anak-anak belajar bersama kami</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item">📖<span class="g-label">Sesi Literasi Bersama</span></div>
+      <div class="g-item">🧪<span class="g-label">Eksperimen IPA</span></div>
+      <div class="g-item">🎨<span class="g-label">Kreativitas Tanpa Batas</span></div>
+      <div class="g-item">🏆<span class="g-label">Raih Prestasi</span></div>
+      <div class="g-item">✏️<span class="g-label">Latihan Soal Bareng</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<section class="section" id="faq" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">❓ FAQ</span>
+      <h2>Pertanyaan Umum Orang Tua</h2>
+      <p>Kami siap jawab semua kekhawatiran Anda</p>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item open" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Berapa usia yang cocok untuk les di AHE?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Program les AHE dirancang untuk anak SD dari kelas 1 hingga kelas 6, yaitu usia sekitar 6–12 tahun. Kami menyesuaikan materi dan metode dengan tingkat kelas masing-masing.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Berapa biaya les di AHE?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Biaya les bervariasi tergantung program dan frekuensi kelas. Silakan hubungi kami melalui WhatsApp atau isi formulir pendaftaran untuk mendapatkan informasi harga dan penawaran spesial.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Apakah ada konsultasi gratis sebelum mendaftar?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Tentu! Anda bisa menghubungi kami kapan saja melalui WhatsApp untuk konsultasi gratis tanpa komitmen. Tim kami dengan senang hati akan membantu Anda memilih program yang tepat untuk putra-putri Anda.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Bagaimana dengan keamanan anak di lingkungan les?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Keamanan anak adalah prioritas utama kami. Ruang belajar kami dalam kondisi terbuka, selalu dipantau, dan orang tua dapat mengunjungi kapan saja. Kami juga menyediakan laporan harian jika diperlukan.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Berapa lama satu sesi les?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Setiap sesi les berlangsung selama 60–90 menit, termasuk waktu untuk beristirahat sebentar. Hal ini dirancang agar anak tetap fokus dan tidak kelelahan selama belajar.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <h4>Apakah jadwal les bisa disesuaikan?</h4>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a"><p>Kami memahami kesibukan keluarga. Jadwal les kami tersedia di beberapa slot waktu yang fleksibel. Silakan lihat jadwal yang tersedia atau hubungi kami untuk opsi yang paling sesuai.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ KONTAK & PENDAFTARAN ════════ -->
+<section class="section" id="kontak" style="background:linear-gradient(160deg,#E8F5FF,#E6FAF0)">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="tag">📞 Kontak & Daftar</span>
+      <h2>Mari Mulai Perjalanan Belajar Anak Anda</h2>
+      <p>Daftar sekarang dan dapatkan sesi konsultasi gratis pertama</p>
+    </div>
+    <div class="contact-wrap">
+      <!-- left info -->
+      <div class="contact-info reveal">
+        <h2>Hubungi Kami</h2>
+        <p>Kami senang membantu Anda! Jangan ragu untuk bertanya atau langsung daftarkan anak Anda.</p>
+
+        <div class="info-block">
+          <div class="ib-icon">📍</div>
+          <div>
+            <h5>Lokasi Les</h5>
+            <p>Kamarang Lebak, Banten<br/>Mudah dijangkau & dekat dari berbagai area</p>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="ib-icon" style="background:var(--green-lt)">📞</div>
+          <div>
+            <h5>Hubungi Kami</h5>
+            <p>WhatsApp: <strong>085-7216-62001</strong><br/>Senin – Sabtu, 08.00–18.00 WIB</p>
+          </div>
+        </div>
+
+        <!-- jadwal -->
+        <div class="schedule-wrap">
+          <h5>🕐 Jadwal Les Tersedia</h5>
+          <div class="sched-row"><span>Senin – Rabu</span><span>16.00 – 18.00 WIB</span></div>
+          <div class="sched-row"><span>Kamis – Jumat</span><span>15.30 – 17.30 WIB</span></div>
+          <div class="sched-row"><span>Sabtu</span><span>08.00 – 11.00 WIB</span></div>
+          <div class="sched-row"><span>Minggu</span><span>Libur</span></div>
+        </div>
+
+        <a href="https://wa.me/62085721662001?text=Halo%20AHE%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M20.04 2.438h-8.08C7.56 2.438 2 8 2 14.438c0 1.89.466 3.84 1.386 5.566L2 24l5.654-1.438c1.496.836 3.374 1.276 5.386 1.276h8.08c4.4 0 8-3.6 8-8 0-4.4-3.6-8-8-8z" fill="#fff"/><path d="M17.614 13.592c-.284-.142-1.68-.84-1.938-.934-.26-.094-.448-.14-.636.14-.188.28-.726.934-.888 1.122-.164.188-.328.21-.608.07-.284-.14-1.2-.44-2.284-1.412-.846-.754-1.416-1.684-1.584-1.972-.168-.288-.018-.444.126-.588.132-.132.296-.344.444-.516.148-.172.198-.288.298-.476.098-.188.05-.354-.026-.496-.076-.142-.684-1.652-.936-2.26-.252-.612-.504-.528-.636-.536-.164-.014-.34-.018-.516-.018-.18 0-.472.068-.722.34-.25.272-.952.94-.952 2.292s.98 2.664 1.116 2.856c.138.192 2.718 4.152 6.592 5.82 3.272 1.367 3.272 1.367 3.868 1.344.594-.028 1.916-.74 2.188-1.458.268-.72.268-1.338.188-1.464-.076-.128-.288-.2-.604-.35z" fill="#2A7DB5"/></svg>
+          Konsultasi Gratis via WhatsApp
+        </a>
+      </div>
+
+      <!-- right form -->
+      <div class="reveal">
+        <div class="reg-form">
+          <h3>📝 Formulir Pendaftaran Les</h3>
+          <p class="form-sub">Isi data di bawah dan kami akan menghubungi Anda dalam 24 jam</p>
+
+          <div class="form-group">
+            <label>Nama Lengkap Orang Tua</label>
+            <input type="text" id="f_nama" placeholder="Contoh: Ibu Sari Dewi"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>No. WhatsApp</label>
+              <input type="tel" id="f_wa" placeholder="081234567890"/>
+            </div>
+            <div class="form-group">
+              <label>Nama Anak</label>
+              <input type="text" id="f_anak" placeholder="Contoh: Budi"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Kelas Anak</label>
+              <select id="f_kelas">
+                <option value="" disabled selected>Pilih kelas</option>
+                <option value="1">Kelas 1</option>
+                <option value="2">Kelas 2</option>
+                <option value="3">Kelas 3</option>
+                <option value="4">Kelas 4</option>
+                <option value="5">Kelas 5</option>
+                <option value="6">Kelas 6</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Program yang Diminati</label>
+              <select id="f_program">
+                <option value="" disabled selected>Pilih program</option>
+                <option value="calistung">Calistung</option>
+                <option value="matematika">Matematika SD</option>
+                <option value="bahasa">Bahasa Indonesia</option>
+                <option value="ipa">IPA</option>
+                <option value="pr">Pendampingan PR & Ulangan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pesan / Pertanyaan (optional)</label>
+            <input type="text" id="f_pesan" placeholder="Apa yang ingin Anda tanyakan?"/>
+          </div>
+          <button class="btn-submit" onclick="submitForm()">🚀 Kirim Pendaftaran</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fb-logo"><span class="fl-icon">⭐</span> Anak Hebat Kamarang Lebak</div>
+      <p>Lembaga les pendidikan terpercaya untuk anak SD. Kami hadir untuk membimbing setiap langkah perjalanan akademik anak Anda dengan cara yang menyenangkan.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigasi</h5>
+      <a href="#tentang">Tentang AHE</a>
+      <a href="#program">Program Les</a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#testimoni">Testimoni</a>
+    </div>
+    <div class="footer-col">
+      <h5>Info</h5>
+      <a href="#galeri">Galeri</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontak">Kontak</a>
+      <a href="#kontak">Pendaftaran</a>
+    </div>
+    <div class="footer-col">
+      <h5>Hubungi</h5>
+      <a href="#">📍 Kamarang Lebak,Cirebon,JawaBarat</a>
+      <a href="https://wa.me/62085721662001" target="_blank">📱 085-7216-62001</a>
+      <a href="#">📧 info@ahekl.com</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 Anak Hebat Kamarang Lebak (AHE). Semua hak dilindungi.</span>
+    <span>Dibuat dengan ❤️ untuk generasi masa depan</span>
+  </div>
+</footer>
+
+<!-- toast -->
+<div class="toast" id="toast">✅ Pendaftaran berhasil dikirim! Kami akan menghubungi Anda segera.</div>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script>
+// ── Navbar scroll shrink ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// ── Mobile menu toggle ──
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+// close on outside click
+document.addEventListener('click',(e)=>{
+  const mm=document.getElementById('mobileMenu');
+  if(mm.classList.contains('open')&&!mm.contains(e.target)&&!document.querySelector('.hamburger').contains(e.target)){
+    mm.classList.remove('open');
+  }
+});
+
+// ── Scroll reveal ──
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.15});
+reveals.forEach(el=>observer.observe(el));
+
+// ── FAQ accordion ──
+function toggleFaq(item){
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// ── Form submit ──
+function submitForm(){
+  const nama=document.getElementById('f_nama').value.trim();
+  const wa=document.getElementById('f_wa').value.trim();
+  const anak=document.getElementById('f_anak').value.trim();
+  const kelas=document.getElementById('f_kelas').value;
+  const prog=document.getElementById('f_program').value;
+
+  if(!nama||!wa||!anak||!kelas||!prog){
+    alert('Silakan lengkapi semua kolom wajib terlebih dahulu 😊');
+    return;
+  }
+
+  // show toast
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),3500);
+
+  // reset
+  document.getElementById('f_nama').value='';
+  document.getElementById('f_wa').value='';
+  document.getElementById('f_anak').value='';
+  document.getElementById('f_kelas').selectedIndex=0;
+  document.getElementById('f_program').selectedIndex=0;
+  document.getElementById('f_pesan').value='';
+}
+
+// ── Smooth scroll for nav links ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+
+</body>
+</html>
